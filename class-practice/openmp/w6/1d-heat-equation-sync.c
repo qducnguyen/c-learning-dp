@@ -51,7 +51,7 @@ int main()
 //
   int NT, ID, Mc, start, stop;
   omp_set_num_threads(4);  
-  #pragma omp parallel private(ID,start,stop,i,t)
+  #pragma omp parallel private(ID,start,stop,i,t, Mc)
   {
     ID = omp_get_thread_num();
     NT = omp_get_num_threads();
@@ -62,11 +62,12 @@ int main()
 
     for (t=0;t<Ntime;t++)
     {
-       #pragma omp barrier
        Daoham(T, dT, start, stop);
        #pragma omp barrier
        for (i = start;i < stop;i++ )
           *(T+i) = *(T+i) + D*dt*(*(dT+i));
+       #pragma omp barrier
+
     }
   }
 //
