@@ -6,7 +6,10 @@
 
 int main(int argc, char *argv[])
 {
-	// Break into many part
+	/* Break into many part (3 part, init input, cal, 
+							gather output like in the class, but actually they are the same in here)
+
+	*/
 
 	int rank, size;
 
@@ -105,7 +108,7 @@ int main(int argc, char *argv[])
 
 
 	else {
-		int *A, *B,*C, i, size_part;
+		int *As, *Bs,*Cs, i, size_part;
 		if (rank == size-1) {
 			size_part =  ARRAY_SIZE - break_part_size * (size - 1);
 		}
@@ -114,13 +117,13 @@ int main(int argc, char *argv[])
 			size_part = break_part_size;
 		}
 
-		A = (int *)malloc(size_part*sizeof(int));
-		B = (int *)malloc(size_part*sizeof(int));
-		C = (int *)malloc(size_part*sizeof(int));
+		As = (int *)malloc(size_part*sizeof(int));
+		Bs = (int *)malloc(size_part*sizeof(int));
+		Cs = (int *)malloc(size_part*sizeof(int));
 
 		
 
-		MPI_Recv(A,
+		MPI_Recv(As,
 			size_part,
 			MPI_INT,
 			0,
@@ -129,7 +132,7 @@ int main(int argc, char *argv[])
 			MPI_STATUS_IGNORE
 			);
 
-		MPI_Recv(B,
+		MPI_Recv(Bs,
 			size_part,
 			MPI_INT,
 			0,
@@ -139,10 +142,10 @@ int main(int argc, char *argv[])
 			);
 
 		for(i=0; i<size_part;i++){
-			*(C+i)=  *(A+i) + *(B+i);
+			*(Cs+i)=  *(As+i) + *(Bs+i);
 		}
 
-		MPI_Send(C,
+		MPI_Send(Cs,
 			size_part,
 			MPI_INT,
 			0,
