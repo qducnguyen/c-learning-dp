@@ -7,18 +7,19 @@
 
 // Kernel
 __global__ void KernelTinhTong2Mang(int *a, int *b, int *c) 
-{	int i,index, start, stop;
+{	
+	int i,index, start, stop;
 	index = blockIdx.x * blockDim.x + threadIdx.x;
-    start = index*Nr_Thread_Points;
-    stop  = start + Nr_Thread_Points;
-    for (i=start;i<stop;i++)
+  start = index*Nr_Thread_Points;
+  stop  = start + Nr_Thread_Points;
+  for (i=start;i<stop;i++)
 		*(c + i) = *(a + i) + *(b + i);
 }
 
 int main(void) { 
 // Host code
-  	int i,*a_cpu, *b_cpu, *c_cpu; 
-  	a_cpu = (int *) malloc (N*sizeof(int));
+  int i,*a_cpu, *b_cpu, *c_cpu; 
+  a_cpu = (int *) malloc (N*sizeof(int));
 	b_cpu = (int *) malloc (N*sizeof(int));
 	c_cpu = (int *) malloc (N*sizeof(int));
   	for (i = 0; i < N; i++) {
