@@ -13,6 +13,8 @@ int main(int argc, char**argv){
 	int s[MAX] = {0,1 ,2, 3, 4, 5, 6, 7, 8, 9};
 	int r[MAX];
 
+
+
 	MPI_Recv(r, 
 			MAX, 
 			MPI_INT,
@@ -21,6 +23,7 @@ int main(int argc, char**argv){
 			MPI_COMM_WORLD,
 			&stat);
 
+
 	MPI_Send(s,
 			MAX,
 			MPI_INT,
@@ -28,9 +31,11 @@ int main(int argc, char**argv){
 			1-rank,
 			MPI_COMM_WORLD);
 
-	// Dead f*cklock
+
+
+	// Dead f*cklock but not away round
 	
-	printf("Process %d received: ", rank);
+	printf("Process %d received: \n", rank);
 
 	MPI_Finalize();
 	return 0; 

@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/43987304/mpi-barrier-with-mpi-gather-using-small-vs-large-data-set-sizes
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
@@ -62,6 +63,7 @@ int main(int argc, char *argv[])
 for (t=0;t<Ntime;t++)
     {
 //  4.1.a
+      // Send to left of the next
   if (ID == 0){
     Tl = 100;
     MPI_Send (Tc + Mc - 1, 1, MPI_FLOAT, ID + 1, ID, MPI_COMM_WORLD);
@@ -72,6 +74,7 @@ for (t=0;t<Ntime;t++)
     MPI_Recv (&Tl, 1, MPI_FLOAT, ID - 1, ID - 1, MPI_COMM_WORLD, &Trangthai);
   }
 //  4.1.b
+    // SEnd to right of the before
   if (ID == NP - 1){
     Tr = 25;
     MPI_Send (Tc, 1, MPI_FLOAT, ID - 1, ID, MPI_COMM_WORLD);

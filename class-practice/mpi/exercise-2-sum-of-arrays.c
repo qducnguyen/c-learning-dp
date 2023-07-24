@@ -1,3 +1,5 @@
+
+// How I'm doing it
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
