@@ -1,4 +1,4 @@
-// Some of two array
+// Sum of two array
 
 #include <stdio.h>
 #include <omp.h>

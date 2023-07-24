@@ -6,7 +6,6 @@ int main()
 
 	omp_set_num_threads(20); 
 
-
 	#pragma omp parallel
 	{ 
 

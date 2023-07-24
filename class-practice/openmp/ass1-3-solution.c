@@ -14,7 +14,7 @@ int main() {
         {
             id = omp_get_thread_num();
             *(A+id) = *(A+id) + *(A+id+nthreads);
-    }
+        }
     printf("Sum of A = %d \n",*A);
     return 0;        }
 
