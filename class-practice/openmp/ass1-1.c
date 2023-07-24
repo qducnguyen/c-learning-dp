@@ -1,3 +1,5 @@
+// Some of two array
+
 #include <stdio.h>
 #include <omp.h>
 #include <stdlib.h>

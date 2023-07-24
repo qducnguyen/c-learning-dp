@@ -1,3 +1,5 @@
+// sum of array version 1 :)
+
 #include <stdio.h>
 #include <omp.h>
 #include <stdlib.h>

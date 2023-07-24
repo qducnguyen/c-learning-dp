@@ -1,6 +1,8 @@
+// Version solution =))
 #include <stdio.h>
 #include <malloc.h>
 #include <omp.h>
+
 int main() {
     int N = 64, i, *A;
     A = (int*) malloc(N*sizeof(int));

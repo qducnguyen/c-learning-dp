@@ -1,3 +1,4 @@
+// Version sum of array with reduction
 #include <stdio.h>
 #include <omp.h>
 #include <stdlib.h>
